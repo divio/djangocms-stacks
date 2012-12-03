@@ -1,0 +1,21 @@
+{% extends 'admin/change_form.html' %}
+
+{% block field_sets %}
+	<div style="display: none;"><input type="hidden" name="language" value="{{language}}" id="id_language"/></div>
+
+	{% if show_language_tabs %}
+		<div id="page_form_lang_tabs">
+			{% for lang_code, lang_name in language_tabs %}
+				<input type="button" onclick="trigger_lang_button(this,'./?language={{lang_code}}');"
+					   class="language_button {% ifequal lang_code language %}selected{% else %}{% if not lang_code in filled_languages %} notfilled{% endif %}{% endifequal %}"
+					   id="debutton" name="{{lang_code}}" value="{{lang_name}}" />
+			{% endfor %}
+		</div>
+	{% endif %}
+
+
+	{% if show_language_tabs %}
+		<h2 class="header"></h2>
+	{% endif %}
+{{ block.super }}
+{% endblock %}
