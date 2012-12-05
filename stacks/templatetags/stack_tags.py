@@ -10,6 +10,7 @@ from stacks.models import Stack
 
 register = template.Library()
 
+
 class StackNode(Tag):
     name = 'stack'
     options = Options(
@@ -19,6 +20,8 @@ class StackNode(Tag):
     )
 
     def render_tag(self, context, code, varname):
+        # TODO: language override (the reason this is not implemented, is that language selection is burried way
+        #       down somewhere in render_plugins. There it gets extracted from the request)
         if not code:
             # an empty string was passed in or the variable is not available in the context
             return ''

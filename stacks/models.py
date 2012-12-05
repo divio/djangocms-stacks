@@ -9,9 +9,7 @@ from django.conf import settings
 class Stack(models.Model):
     name = models.CharField(max_length=255, blank=True, default='', verbose_name=_("name"))
     code = models.CharField(max_length=255, unique=True, blank=True)
-    content = PlaceholderField(slotname='stack_content',
-                                verbose_name=_('content'),
-                                related_name='stacks_contents')
+    content = PlaceholderField(slotname='stack_content', verbose_name=_('content'), related_name='stacks_contents')
 
     class Meta:
         verbose_name = _('stack')
@@ -32,4 +30,3 @@ class StackLink(CMSPlugin):
 
     def __unicode__(self):
         return self.stack.name
-

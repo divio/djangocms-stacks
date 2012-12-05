@@ -6,6 +6,7 @@ from cms.plugin_rendering import render_plugins
 from stacks.models import StackLink
 from cms.plugins.utils import get_plugins
 
+
 class StackPlugin(CMSPluginBase):
     model = StackLink
     name = _("Stack")

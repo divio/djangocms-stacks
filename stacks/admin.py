@@ -15,7 +15,7 @@ class StackAdmin(PlaceholderAdmin):
         tab_language = request.GET.get("language", None)
         response = super(StackAdmin, self).change_view(request, object_id, extra_context=extra_context)
 
-        if tab_language and response.status_code == 302 and response._headers['location'][1] == request.path :
+        if tab_language and response.status_code == 302 and response._headers['location'][1] == request.path:
             location = response._headers['location']
             response._headers['location'] = (location[0], "%s?language=%s" % (location[1], tab_language))
         return response
