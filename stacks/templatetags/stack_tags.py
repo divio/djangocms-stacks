@@ -20,8 +20,9 @@ class StackNode(Tag):
     )
 
     def render_tag(self, context, code, varname):
-        # TODO: language override (the reason this is not implemented, is that language selection is burried way
-        #       down somewhere in render_plugins. There it gets extracted from the request)
+        # TODO: language override (the reason this is not implemented, is that language selection is buried way
+        #       down somewhere in some method called in render_plugins. There it gets extracted from the request
+        #       and a language in request.GET always overrides everything.)
         if not code:
             # an empty string was passed in or the variable is not available in the context
             return ''
