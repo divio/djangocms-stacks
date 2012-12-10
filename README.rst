@@ -40,8 +40,18 @@ in ``settings``::
     INSTALLED_APPS = (
         [...]
         'stacks',
+        'django_select2',
         [...]
     )
+
+add the ``Django-Select2`` urls::
+
+    urlpatterns = patterns('',
+        [...]
+        url(r'^select2/', include('django_select2.urls')),
+        [...]
+    )
+
 
 create the database tables::
 
