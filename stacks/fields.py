@@ -9,6 +9,6 @@ class StackSearchField(AutoModelSelect2Field):
 
     def security_check(self, request, *args, **kwargs):
         user = request.user
-        if user and not user.is_anonymous() and user.has_perm('djangocms_stack.change_stack'):
+        if user and not user.is_anonymous() and user.is_staff and user.has_perm('djangocms_stack.change_stack'):
             return True
         return False
