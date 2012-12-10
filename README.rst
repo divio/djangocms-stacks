@@ -22,6 +22,14 @@ There is currently no validation in place to prevent infinite loops... so please
 inside a Stack with a link to itself.
 
 
+Requirements
+============
+
+* ``python>=2.6``
+* ``Django>=1.3``
+* ``django-cms>=2.3``
+
+
 Installation and Configuration
 ==============================
 
