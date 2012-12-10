@@ -15,7 +15,7 @@ setup(
     install_requires = (
         # 'Django>=1.3,<1.5',  # no need to limit while in development
         'Django>=1.3',
-        'django-cms',
+        'django-cms>=2.3',
     ),
     include_package_data=True,
     zip_safe=False,
