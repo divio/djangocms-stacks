@@ -34,5 +34,4 @@ class StackAdmin(PlaceholderAdmin):
         language = get_language_from_request(request)
         return queryset.filter(language=language)
 
-
 admin.site.register(Stack, StackAdmin)

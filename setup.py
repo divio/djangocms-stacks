@@ -16,6 +16,7 @@ setup(
         # 'Django>=1.3,<1.5',  # no need to limit while in development
         'Django>=1.3',
         'django-cms>=2.3',
+        'Django-Select2',
     ),
     include_package_data=True,
     zip_safe=False,
