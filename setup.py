@@ -8,7 +8,7 @@ setup(
     license = 'BSD',
     platforms=['OS Independent'],
     description = "Stacks: Re-usable content blocks in django CMS.",
-    long_description = open('README.rst').read(),
+    long_description = open('README.rst').read() + u'\n' + open('HISTORY.rst').read(),
     author = 'Divio AG',
     author_email = 'developers@divio.ch',
     packages=find_packages(),
