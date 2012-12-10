@@ -3,7 +3,8 @@ from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
 from cms.plugin_rendering import render_plugins
-from stacks.models import StackLink
+from stacks.fields import StackSearchField
+from stacks.models import StackLink, Stack
 from cms.plugins.utils import get_plugins
 
 
@@ -25,5 +26,11 @@ class StackPlugin(CMSPluginBase):
             'content': html_content,
         })
         return context
+
+    def formfield_for_dbfield(self, db_field, request=None, **kwargs):
+        if db_field.name == "stack":
+            return StackSearchField(**kwargs)
+        return super(StackPlugin, self).formfield_for_dbfield(db_field, request=None, **kwargs)
+
 
 plugin_pool.register_plugin(StackPlugin)
