@@ -1,7 +1,6 @@
-from classytags.arguments import Argument, KeywordArgument
+from classytags.arguments import Argument
 from classytags.core import Tag, Options
 from django import template
-from django.utils import translation
 from django.utils.safestring import mark_safe
 from cms.plugin_rendering import render_plugins
 from cms.plugins.utils import get_plugins

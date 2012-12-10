@@ -10,15 +10,15 @@ from cms.plugins.utils import get_plugins
 class StackPlugin(CMSPluginBase):
     model = StackLink
     name = _("Stack")
-
     render_template = "cms/plugins/stacks.html"
+    admin_preview = False
 
     def render(self, context, instance, placeholder):
         # TODO: once we drop 2.3.x support we can just use the "render_plugin" templatetag
         #       instead of rendering html here.
         plugins = get_plugins(context['request'], instance.stack.content)
         processors = ()
-        html_content = mark_safe("".join(render_plugins(plugins, context, placeholder, processors)))
+        html_content = mark_safe(u"".join(render_plugins(plugins, context, placeholder, processors)))
         context.update({
             'instance': instance,
             'placeholder': placeholder,
