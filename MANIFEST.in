@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+include HISTORY.rst
+recursive-include stacks/templates *
+recursive-include stacks/locale *
+recursive-exclude * *.pyc

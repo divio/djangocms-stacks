@@ -8,14 +8,14 @@ setup(
     license = 'BSD',
     platforms=['OS Independent'],
     description = "Stacks: Re-usable content blocks in django CMS.",
-    long_description = open('README.rst').read(),
+    long_description = open('README.rst').read() + u'\n' + open('HISTORY.rst').read(),
     author = 'Divio AG',
     author_email = 'developers@divio.ch',
     packages=find_packages(),
     install_requires = (
         # 'Django>=1.3,<1.5',  # no need to limit while in development
         'Django>=1.3',
-        'django-cms',
+        'django-cms>=2.3',
     ),
     include_package_data=True,
     zip_safe=False,
