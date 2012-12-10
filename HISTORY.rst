@@ -2,6 +2,12 @@ history
 =======
 
 
+0.2.2 (2012-12-10)
+------------------
+
+Adds Permission checks for ajax requests
+
+
 0.2.1 (2012-12-10)
 ------------------
 
