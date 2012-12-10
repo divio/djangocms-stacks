@@ -12,13 +12,10 @@ class Migration(SchemaMigration):
         db.create_table('stacks_stack', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(default='', max_length=255, blank=True)),
-            ('code', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255)),
+            ('code', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255, blank=True)),
             ('content', self.gf('django.db.models.fields.related.ForeignKey')(related_name='stacks_contents', null=True, to=orm['cms.Placeholder'])),
         ))
         db.send_create_signal('stacks', ['Stack'])
-
-        # Adding unique constraint on 'Stack', fields ['code']
-        db.create_unique('stacks_stack', ['code'])
 
         # Adding model 'StackLink'
         db.create_table('cmsplugin_stacklink', (
@@ -29,9 +26,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        # Removing unique constraint on 'Stack', fields ['code']
-        db.delete_unique('stacks_stack', ['code'])
-
         # Deleting model 'Stack'
         db.delete_table('stacks_stack')
 
@@ -43,7 +37,7 @@ class Migration(SchemaMigration):
         'cms.cmsplugin': {
             'Meta': {'object_name': 'CMSPlugin'},
             'changed_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 12, 3, 0, 0)'}),
+            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 12, 10, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'language': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
             'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
@@ -62,8 +56,8 @@ class Migration(SchemaMigration):
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
         },
         'stacks.stack': {
-            'Meta': {'unique_together': "(('code',),)", 'object_name': 'Stack'},
-            'code': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
+            'Meta': {'object_name': 'Stack'},
+            'code': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255', 'blank': 'True'}),
             'content': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'stacks_contents'", 'null': 'True', 'to': "orm['cms.Placeholder']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255', 'blank': 'True'})
