@@ -30,7 +30,7 @@ class StackPlugin(CMSPluginBase):
     def formfield_for_dbfield(self, db_field, request=None, **kwargs):
         if db_field.name == "stack":
             return StackSearchField(**kwargs)
-        return super(StackPlugin, self).formfield_for_dbfield(db_field, request=None, **kwargs)
+        return super(StackPlugin, self).formfield_for_dbfield(db_field, request=request, **kwargs)
 
 
 plugin_pool.register_plugin(StackPlugin)
