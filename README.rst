@@ -7,7 +7,7 @@ Stacks: re-usable content blocks
 
 To put it in terms of django CMS: This is re-usable Placeholder. It can used in any template as a named entity::
 
-    {% load stacks_tags %}
+    {% load stack_tags %}
     {% stack 'my_footer' %}
 
 This will create a ``Stack`` with the ``my_footer`` identifier. It can be edited in admin.
