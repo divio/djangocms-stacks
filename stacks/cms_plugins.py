@@ -6,6 +6,7 @@ from cms.plugin_rendering import render_plugins
 from stacks.fields import StackSearchField
 from stacks.models import StackLink, Stack
 from cms.plugins.utils import get_plugins
+from django.conf import settings
 
 
 class StackPlugin(CMSPluginBase):
@@ -13,6 +14,7 @@ class StackPlugin(CMSPluginBase):
     name = _("Stack")
     render_template = "cms/plugins/stacks.html"
     admin_preview = False
+    raw_id_fields = ('stack',)
 
     def render(self, context, instance, placeholder):
         # TODO: once we drop 2.3.x support we can just use the "render_plugin" templatetag
@@ -28,8 +30,9 @@ class StackPlugin(CMSPluginBase):
         return context
 
     def formfield_for_dbfield(self, db_field, request=None, **kwargs):
-        if db_field.name == "stack":
-            return StackSearchField(**kwargs)
+        if getattr(settings, 'DJANGOCMS_STACKS_USE_SELECT2', False):
+            if db_field.name == "stack":
+                return StackSearchField(**kwargs)
         return super(StackPlugin, self).formfield_for_dbfield(db_field, request=request, **kwargs)
 
 
